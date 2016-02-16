@@ -45,3 +45,5 @@ build/
 obj/
 
 /app
+
+.idea

@@ -31,24 +31,24 @@ dependencies {
     }
 }
 ```
-
+### Usage
 
 ```java
-        RVLazyScroll<Person> endless = new RVLazyScroll<Person>() {
-            @Override
-            public List<Person> onLoadMore(int offset) {
-                // your query here and move it to list Person
-                return new ArrayList<Person>(){new Person()};
-            }
+    RVLazyScroll<Person> endless = new RVLazyScroll<Person>() {
+        @Override
+        public List<Person> onLoadMore(int offset) {
+            // your query here and move it to list Person
+            return new ArrayList<Person>(){new Person()};
+        }
 
-            @Override
-            public void onDoneLoad(List<Person> newListOfdata) {
-                // this is where your add it to your adapter
-                adapter.addAll(newListOfdata);
-            }
-        };
+        @Override
+        public void onDoneLoad(List<Person> newListOfdata) {
+            // this is where your add it to your adapter
+            adapter.addAll(newListOfdata);
+        }
+    };
 
-        RecyclerView recyclerView ;
-        recyclerView.addOnScrollListener(endless);
+    RecyclerView recyclerView ;
+    recyclerView.addOnScrollListener(endless);
 
 ```

@@ -34,7 +34,7 @@ dependencies {
 ### Usage
 
 ```java
-    RVLazyScroll<Person> endless = new RVLazyScroll<Person>() {
+    RVLazyScroll<Person> endless = new RVLazyScroll<Person>(mLinearLayoutManager) {
         @Override
         public List<Person> onLoadMore(int offset) {
             // your query here and move it to list Person

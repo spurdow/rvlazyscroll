@@ -3,8 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.spurdow.rvlazyscrollexample.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/ic_action_grid"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/action_grid"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ic_action_staggered_grid"
+        android:orderInCategory="100"
+        android:title="@string/action_staggered_grid"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ic_action_linear"
+        android:orderInCategory="100"
+        android:title="@string/action_linear"
         app:showAsAction="never" />
 </menu>

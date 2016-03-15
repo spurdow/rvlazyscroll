@@ -1,8 +1,10 @@
 package com.spurdow.rvlazyscroll;
 
 import android.os.AsyncTask;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -11,12 +13,30 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Created by davidluvellejoseph on 2/17/16.
  */
 public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
-    private final LinearLayoutManager mLinearLayoutManager;
+    private final RecyclerView.LayoutManager mLayoutManager;
     private final AtomicBoolean isLoading = new AtomicBoolean(false);
     private LoadMoreAsync mLoadMoreAsync = new LoadMoreAsync();
-    public RVLazyScroll(LinearLayoutManager linearLayoutManager) {
+    public RVLazyScroll(RecyclerView.LayoutManager layoutManager) {
         super();
-        mLinearLayoutManager = linearLayoutManager;
+        mLayoutManager = layoutManager;
+    }
+
+    /**
+     * When dealing with grid layouts
+     * @param lastVisibleItemPositions
+     * @return
+     */
+    public int getLastVisibleItem(int[] lastVisibleItemPositions) {
+        int maxSize = 0;
+        for (int i = 0; i < lastVisibleItemPositions.length; i++) {
+            if (i == 0) {
+                maxSize = lastVisibleItemPositions[i];
+            }
+            else if (lastVisibleItemPositions[i] > maxSize) {
+                maxSize = lastVisibleItemPositions[i];
+            }
+        }
+        return maxSize;
     }
 
     @Override
@@ -35,7 +55,7 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
             return;
         }
 
-        final int childrenSize = mLinearLayoutManager.getItemCount() - 1;
+        final int childrenSize = mLayoutManager.getItemCount() - 1;
 
         if(canLoadMore()) {
 
@@ -64,8 +84,22 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
      * @return true if visible last child is eq or gr than count size
      */
     public boolean canLoadMore(){
-        final int lastChildPosition = mLinearLayoutManager.findLastCompletelyVisibleItemPosition();
-        final int childrenSize = mLinearLayoutManager.getItemCount() - 1;
+        int lastChildPosition = 0;
+        final int childrenSize = mLayoutManager.getItemCount() - 1;
+        if(mLayoutManager instanceof LinearLayoutManager){
+            LinearLayoutManager linearLayoutManager = (LinearLayoutManager) mLayoutManager;
+            if(linearLayoutManager instanceof GridLayoutManager){
+                GridLayoutManager layoutManager = (GridLayoutManager) linearLayoutManager;
+                lastChildPosition = layoutManager.findLastCompletelyVisibleItemPosition();
+            }else {
+
+                lastChildPosition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
+            }
+        }else if(mLayoutManager instanceof StaggeredGridLayoutManager){
+            StaggeredGridLayoutManager layoutManager = (StaggeredGridLayoutManager) mLayoutManager;
+            int[] visibleItems = layoutManager.findLastVisibleItemPositions(null);
+            lastChildPosition = getLastVisibleItem(visibleItems);
+        }
 
         return lastChildPosition >= childrenSize;
     }

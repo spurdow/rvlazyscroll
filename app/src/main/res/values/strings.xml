@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">RVLazyScrollExample</string>
     <string name="action_settings">Settings</string>
+    <string name="action_grid">Use Grid</string>
+    <string name="action_staggered_grid">Use StaggeredGrid</string>
+    <string name="action_linear">Use Linear</string>
 </resources>

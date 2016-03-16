@@ -27,7 +27,7 @@ Add this in your app `build.gradle` file
 ```gradle
 dependencies {
 	...
-    compile 'com.github.spurdow:rvlazyscroll:1.0.0'
+    compile 'com.github.spurdow:rvlazyscroll:1.0.3'
     }
 }
 ```
@@ -52,3 +52,7 @@ dependencies {
     recyclerView.addOnScrollListener(endless);
 
 ```
+
+### Changes
+
+Added Support for Grid and Staggered

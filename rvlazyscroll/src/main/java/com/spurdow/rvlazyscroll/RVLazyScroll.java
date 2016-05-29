@@ -118,6 +118,11 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
      */
     public abstract void onDoneLoad(List<M> newListOfdata);
 
+    public void doLoadTest(){
+        final int childrenSize = mLayoutManager.getItemCount() - 1;
+        mLoadMoreAsync.execute(childrenSize);
+    }
+
     public boolean isLoading(){
         return isLoading.get();
     }

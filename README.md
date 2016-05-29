@@ -2,7 +2,7 @@
 
 
 [![](https://jitpack.io/v/spurdow/rvlazyscroll.svg)](https://jitpack.io/#spurdow/rvlazyscroll)
-
+[![Build Status](https://travis-ci.org/spurdow/rvlazyscroll.svg)](https://travis-ci.org/spurdow/rvlazyscroll)
 
 Another Endless RecyclerView
 

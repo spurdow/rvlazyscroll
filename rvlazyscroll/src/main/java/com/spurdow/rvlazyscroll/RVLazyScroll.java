@@ -112,7 +112,7 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
             lastChildPosition = getLastVisibleItem(visibleItems);
         }
 
-        return (lastChildPosition - lastCompleteThreshold) >= childrenSize;
+        return lastChildPosition  >= (childrenSize - lastCompleteThreshold);
     }
 
     /**

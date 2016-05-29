@@ -20,5 +20,4 @@ android:
   licenses:
     - '.+'
 script:
-    - ./gradlew check -PdisablePreDex --continue --stacktrace
-    - ./gradlew connectedAndroidTest -PdisablePreDex --continue --stacktrace
+    - ./gradlew test

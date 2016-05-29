@@ -79,4 +79,5 @@ dependencies {
 ### Changes
 
 Added Support for Grid and Staggered
+
 Added Support for last visible threshold

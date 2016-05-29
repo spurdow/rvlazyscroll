@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,6 +45,10 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+    public List<Person> clone(){
+        return new ArrayList<>(mList);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

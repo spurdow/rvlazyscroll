@@ -20,23 +20,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    LinearLayoutManager mLinearLayoutManager = null;
-    StaggeredGridLayoutManager mStaggeredGridLayoutManager = null;
-    GridLayoutManager mGridLayoutManager = null;
-    PersonAdapter mAdapter = null;
-    RecyclerView mRecyclerView;
+    public LinearLayoutManager mLinearLayoutManager = null;
+    public StaggeredGridLayoutManager mStaggeredGridLayoutManager = null;
+    public GridLayoutManager mGridLayoutManager = null;
+    public PersonAdapter mAdapter = null;
+    public RecyclerView mRecyclerView;
 
-    RVLazyScroll<Person> linearLazyScroll ;
-    RVLazyScroll<Person> staggeredLazyScroll;
-    RVLazyScroll<Person> gridLazyScroll ;
+    public RVLazyScroll<Person> linearLazyScroll ;
+    public RVLazyScroll<Person> staggeredLazyScroll;
+    public RVLazyScroll<Person> gridLazyScroll ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mGridLayoutManager = new GridLayoutManager(this , 2 , LinearLayoutManager.VERTICAL , false);
 
 
-        mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
 
@@ -138,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        mRecyclerView.addOnScrollListener(staggeredLazyScroll);
+        mRecyclerView.addOnScrollListener(linearLazyScroll);
 
     }
     @Override

@@ -17,9 +17,19 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
     private final RecyclerView.LayoutManager mLayoutManager;
     private final AtomicBoolean isLoading = new AtomicBoolean(false);
     private LoadMoreAsync mLoadMoreAsync = new LoadMoreAsync();
+
+    private final int lastCompleteThreshold ;
+
     public RVLazyScroll(RecyclerView.LayoutManager layoutManager) {
         super();
         mLayoutManager = layoutManager;
+        lastCompleteThreshold = 0;
+    }
+
+    public RVLazyScroll(RecyclerView.LayoutManager layoutManager , int lastCompleteThreshold) {
+        super();
+        mLayoutManager = layoutManager;
+        this.lastCompleteThreshold = lastCompleteThreshold;
     }
 
     /**
@@ -102,7 +112,7 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
             lastChildPosition = getLastVisibleItem(visibleItems);
         }
 
-        return lastChildPosition >= childrenSize;
+        return (lastChildPosition - lastCompleteThreshold) >= childrenSize;
     }
 
     /**

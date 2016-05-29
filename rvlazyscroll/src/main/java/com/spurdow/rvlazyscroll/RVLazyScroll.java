@@ -18,7 +18,7 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
     private final AtomicBoolean isLoading = new AtomicBoolean(false);
     private LoadMoreAsync mLoadMoreAsync = new LoadMoreAsync();
 
-    private final int lastCompleteThreshold ;
+    private int lastCompleteThreshold ;
 
     public RVLazyScroll(RecyclerView.LayoutManager layoutManager) {
         super();
@@ -30,6 +30,11 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
         super();
         mLayoutManager = layoutManager;
         this.lastCompleteThreshold = lastCompleteThreshold;
+    }
+
+    public RVLazyScroll addLastCompleteThreshold(int lastCompleteThreshold) {
+        this.lastCompleteThreshold = lastCompleteThreshold;
+        return this;
     }
 
     /**

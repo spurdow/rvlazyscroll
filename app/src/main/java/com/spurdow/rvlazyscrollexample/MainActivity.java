@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        linearLazyScroll = new RVLazyScroll<Person>(mLinearLayoutManager) {
+        linearLazyScroll = new RVLazyScroll<Person>(mLinearLayoutManager , 2) {
             @Override
             public List<Person> onLoadMore(int offset) {
                 return new ArrayList<Person>(){{

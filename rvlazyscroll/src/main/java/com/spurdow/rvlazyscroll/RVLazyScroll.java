@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -47,7 +48,7 @@ public abstract class RVLazyScroll<M> extends RecyclerView.OnScrollListener{
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
-
+        Log.w("RV" , dx + " " + dy);
         /**
          * Return nothing if it is still loading
          */

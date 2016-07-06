@@ -51,16 +51,16 @@ public class EndlessTest {
 
     @Test
     public void validateEndless(){
-        assertNotNull(mRecyclerView);
-        assertNotNull(mAdapter);
+
         int current_max_size = mAdapter.getItemCount();
         System.out.println(mAdapter.getItemCount() + " " + mRecyclerView.getChildCount() + " "  + linearLayoutManager.getChildCount() + " " + mRecyclerView.getScrollState());
 
         System.out.println(mAdapter.clone());
         lazyScroll.doLoadTest();
 
-        System.out.println(mAdapter.clone());
-        org.robolectric.shadows.ShadowLooper.runUiThreadTasksIncludingDelayedTasks();
+        mRecyclerView.measure(0 , 0);
+        mRecyclerView.layout(0 , 0 , 100, 1000);
+
         System.out.println(mAdapter.getItemCount() + " " + mRecyclerView.getChildCount() + " "  + linearLayoutManager.getChildCount() + " " + mRecyclerView.getScrollState());
         assertEquals(current_max_size + 3 , mAdapter.getItemCount());
 

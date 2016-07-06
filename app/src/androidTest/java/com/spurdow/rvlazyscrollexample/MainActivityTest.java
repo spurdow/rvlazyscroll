@@ -41,7 +41,8 @@ public class MainActivityTest {
     public void validateEndless() {
 
         final int current = mActivityRule.getActivity().mAdapter.getItemCount();
-        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(mActivityRule.getActivity().mAdapter.getItemCount() - 2))
+        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(mActivityRule.getActivity().mAdapter.getItemCount() - 3
+        ))
 
         ;
         assertThat(mActivityRule.getActivity().mAdapter.getItemCount(), is(current + 3));

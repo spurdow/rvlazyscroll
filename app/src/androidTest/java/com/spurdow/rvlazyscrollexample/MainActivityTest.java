@@ -23,6 +23,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
 
 /**
@@ -45,7 +46,7 @@ public class MainActivityTest {
         ))
 
         ;
-        assertThat(mActivityRule.getActivity().mAdapter.getItemCount(), is(current + 3));
+        assertThat(mActivityRule.getActivity().mAdapter.getItemCount(), is(greaterThan(current)));
 
     }
 }

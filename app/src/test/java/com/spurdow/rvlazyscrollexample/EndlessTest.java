@@ -52,18 +52,19 @@ public class EndlessTest {
     @Test
     public void validateEndless(){
 
+        // get the current size
         int current_max_size = mAdapter.getItemCount();
-        System.out.println(mAdapter.getItemCount() + " " + mRecyclerView.getChildCount() + " "  + linearLayoutManager.getChildCount() + " " + mRecyclerView.getScrollState());
 
-        System.out.println(mAdapter.clone());
+        // try to load dummy records
         lazyScroll.doLoadTest();
 
+        // to imitate gesture we have use tweaking in recyclerview
         mRecyclerView.measure(0 , 0);
         mRecyclerView.layout(0 , 0 , 100, 1000);
 
-        System.out.println(mAdapter.getItemCount() + " " + mRecyclerView.getChildCount() + " "  + linearLayoutManager.getChildCount() + " " + mRecyclerView.getScrollState());
-        assertEquals(current_max_size + 3 , mAdapter.getItemCount());
 
+        // tests that current adapter item count is greater than the previous item count
+        assertTrue(mAdapter.getItemCount() > current_max_size);
 
 
     }
